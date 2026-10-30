@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#f7f1e9">
+  <meta name="description" content="安妤鱼 · 恋爱小屋后台">
+  <title>后台 · 安妤鱼</title>
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/css/admin.css">
+</head>
+<body class="admin-body">
+  <section class="login-screen" id="loginScreen">
+    <div class="login-art" aria-hidden="true">
+      <div class="login-art-inner">
+        <a class="login-brand" href="/">
+          <span class="login-mark">
+            <svg viewBox="0 0 64 64"><path d="M32 50c-3.8-3.4-15.5-11.8-18.7-19.5-3.2-7.7 2.4-15.8 10.3-15.1 3.8.3 6.8 2.7 8.4 5.4 1.6-2.7 4.6-5.1 8.4-5.4 7.9-.7 13.5 7.4 10.3 15.1C47.5 38.2 35.8 46.6 32 50z"/></svg>
+          </span>
+          <span>安妤鱼</span>
+        </a>
+        <p class="login-art-quote">“ 把日子写下来，<br>把爱藏进字里行间。”</p>
+        <p class="login-art-note">OUR LITTLE UNIVERSE · PRIVATE SPACE</p>
+      </div>
+    </div>
+
+    <div class="login-panel">
+      <div class="login-card">
+        <div class="login-card-head">
+          <p class="eyebrow">WELCOME BACK</p>
+          <h1>欢迎回来</h1>
+          <p>登录后，继续收藏我们的故事。</p>
+        </div>
+        <form class="login-form" id="loginForm" novalidate>
+          <input type="text" name="username" autocomplete="username" value="anyu" hidden>
+          <label class="field">
+            <span>我们的暗号</span>
+            <span class="password-field">
+              <input id="loginPassword" name="password" type="password" autocomplete="current-password" placeholder="请输入后台密码" required>
+              <button class="password-toggle" id="passwordToggle" type="button" aria-label="显示密码">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12s3.5-6.5 10-6.5S22 12 22 12s-3.5 6.5-10 6.5S2 12 2 12Z"/><circle cx="12" cy="12" r="2.6"/></svg>
+              </button>
+            </span>
+          </label>
+          <p class="form-error" id="loginError" role="alert"></p>
+          <button class="admin-btn primary wide" id="loginSubmit" type="submit">
+            <span>进入我们的小屋</span>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </button>
+        </form>
+        <p class="login-hint" id="loginHint">初次使用密码为 <strong>anyu520</strong>，登录后请及时修改。</p>
+        <a class="back-home" href="/">← 返回网站首页</a>
+      </div>
+      <p class="login-footer">只属于你们的私密空间 · 安妤鱼</p>
+    </div>
+  </section>
+
+  <div class="admin-app" id="adminApp" hidden>
+    <aside class="admin-sidebar">
+      <a class="sidebar-brand" href="/" aria-label="返回网站首页">
+        <span class="sidebar-mark">
+          <svg viewBox="0 0 64 64"><path d="M32 50c-3.8-3.4-15.5-11.8-18.7-19.5-3.2-7.7 2.4-15.8 10.3-15.1 3.8.3 6.8 2.7 8.4 5.4 1.6-2.7 4.6-5.1 8.4-5.4 7.9-.7 13.5 7.4 10.3 15.1C47.5 38.2 35.8 46.6 32 50z"/></svg>
+        </span>
+        <span class="sidebar-brand-text">
+          <strong>安妤鱼</strong>
+          <small>OUR LITTLE UNIVERSE</small>
+        </span>
+      </a>
+      <p class="sidebar-label">管理我们的故事</p>
+      <nav class="admin-nav" id="adminNav" aria-label="后台导航">
+        <button type="button" data-section="overview" class="active">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h6v6H4zM14 4h6v6h-6zM4 14h6v6H4zM14 14h6v6h-6z"/></svg>
+          <span>概览</span>
+        </button>
+        <button type="button" data-section="settings">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .34 1.88l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.7 1.7 0 0 0-1.88-.34 1.7 1.7 0 0 0-1 1.56V21a2 2 0 1 1-4 0v-.09A1.7 1.7 0 0 0 9 19.35a1.7 1.7 0 0 0-1.88.34l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.7 1.7 0 0 0 4.63 15a1.7 1.7 0 0 0-1.56-1H3a2 2 0 1 1 0-4h.09A1.7 1.7 0 0 0 4.65 9a1.7 1.7 0 0 0-.34-1.88l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.7 1.7 0 0 0 9 4.63a1.7 1.7 0 0 0 1-1.56V3a2 2 0 1 1 4 0v.09A1.7 1.7 0 0 0 15 4.65a1.7 1.7 0 0 0 1.88-.34l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.7 1.7 0 0 0 19.37 9c.14.38.4.7.74.92.3.2.65.3 1 .3H21a2 2 0 1 1 0 4h-.09a1.7 1.7 0 0 0-1.51.78Z"/></svg>
+          <span>站点设置</span>
+        </button>
+        <button type="button" data-section="photos">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v14H4z"/><path d="M4 16l5-5 4 4 2-2 5 5"/><circle cx="9" cy="9.5" r="1"/></svg>
+          <span>首页照片</span>
+        </button>
+        <button type="button" data-section="records">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h14v16H5z"/><path d="M8 8h8M8 12h8M8 16h5"/></svg>
+          <span>生活记录</span>
+        </button>
+        <button type="button" data-section="moods">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8.5 14.5c1 1.3 2.2 2 3.5 2s2.5-.7 3.5-2M9 9.5h.01M15 9.5h.01"/></svg>
+          <span>心情记录</span>
+        </button>
+      </nav>
+      <div class="sidebar-bottom">
+        <a href="/" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 4h6v6M20 4l-9 9M18 14v5H5V6h5"/></svg>
+          查看网站
+        </a>
+        <button type="button" id="logoutBtn">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4M16 17l5-5-5-5M21 12H9"/></svg>
+          退出登录
+        </button>
+      </div>
+    </aside>
+
+    <main class="admin-main">
+      <header class="admin-topbar">
+        <div>
+          <p class="topbar-eyebrow">OUR PRIVATE SPACE</p>
+          <h1 id="pageTitle">概览</h1>
+        </div>
+        <div class="topbar-actions">
+          <span class="today-pill" id="todayDate"></span>
+          <a class="icon-btn" href="/" target="_blank" rel="noopener" aria-label="查看网站">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12s3.5-6.5 10-6.5S22 12 22 12s-3.5 6.5-10 6.5S2 12 2 12Z"/><circle cx="12" cy="12" r="2.6"/></svg>
+          </a>
+        </div>
+      </header>
+
+      <div class="admin-content">
+        <!-- ======================= overview ======================= -->
+        <section class="admin-panel" data-panel="overview">
+          <div class="welcome-card">
+            <div class="welcome-copy">
+              <p class="eyebrow">TODAY IS A GOOD DAY</p>
+              <h2>嗨，<span id="welcomeName">安 &amp; 妤</span></h2>
+              <p id="welcomeSubtitle">今天也把平凡的小事，留一点在这里吧。</p>
+              <div class="welcome-actions">
+                <button class="admin-btn primary" type="button" data-goto="records" data-new-record="true">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+                  记录今天
+                </button>
+                <button class="admin-btn ghost" type="button" data-goto="moods">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8.5 14.5c1 1.3 2.2 2 3.5 2s2.5-.7 3.5-2"/></svg>
+                  记下心情
+                </button>
+              </div>
+            </div>
+            <div class="welcome-art" aria-hidden="true">
+              <div class="welcome-ring"></div>
+              <span class="welcome-emoji">💌</span>
+              <p>love<br>every day</p>
+            </div>
+          </div>
+
+          <div class="password-alert" id="passwordAlert" hidden>
+            <span>🪄</span>
+            <p>你还在使用初始密码，为了保护我们的小秘密，建议现在就去修改。</p>
+            <button type="button" data-goto="settings">去修改</button>
+          </div>
+
+          <div class="stats-grid" id="overviewStats">
+            <div class="stat-box">
+              <span class="stat-icon rose">♥</span>
+              <strong data-stat="daysTogether">0</strong>
+              <span>相爱的日子</span>
+              <small>DAYS TOGETHER</small>
+            </div>
+            <div class="stat-box">
+              <span class="stat-icon gold">✎</span>
+              <strong data-stat="recordCount">0</strong>
+              <span>生活记录</span>
+              <small>MOMENTS</small>
+            </div>
+            <div class="stat-box">
+              <span class="stat-icon sage">☺</span>
+              <strong data-stat="moodCount">0</strong>
+              <span>心情日记</span>
+              <small>MOODS</small>
+            </div>
+            <div class="stat-box">
+              <span class="stat-icon wine">▣</span>
+              <strong data-stat="photoCount">0</strong>
+              <span>照片收藏</span>
+              <small>PHOTOS</small>
+            </div>
+          </div>
+
+          <div class="overview-grid">
+            <div class="admin-card">
+              <div class="card-head">
+                <div>
+                  <p class="card-kicker">LATEST MOMENTS</p>
+                  <h3>最近的记录</h3>
+                </div>
+                <button class="text-btn" type="button" data-goto="records">全部记录 →</button>
+              </div>
+              <div class="mini-records" id="overviewRecent"></div>
+            </div>
+            <div class="admin-card mood-mini-card">
+              <div class="card-head">
+                <div>
+                  <p class="card-kicker">MOOD LATELY</p>
+                  <h3>最近的心情</h3>
+                </div>
+                <button class="text-btn" type="button" data-goto="moods">全部心情 →</button>
+              </div>
+              <div id="overviewMood"></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ======================= settings ======================= -->
+        <section class="admin-panel" data-panel="settings" hidden>
+          <div class="admin-card">
+            <div class="card-head">
+              <div>
+                <p class="card-kicker">SITE SETTINGS</p>
+                <h3>我们的小屋</h3>
+                <p class="card-desc">这里修改的内容会马上出现在网站首页。</p>
+              </div>
+            </div>
+            <form class="settings-form" id="settingsForm">
+              <div class="form-grid two">
+                <label class="field">
+                  <span>网站名称</span>
+                  <input type="text" name="siteTitle" maxlength="20" required placeholder="安妤鱼">
+                </label>
+                <label class="field">
+                  <span>恋爱开始日期</span>
+                  <input type="date" name="startDate" required>
+                  <small>首页的恋爱时长会从这一天开始计算。</small>
+                </label>
+                <label class="field">
+                  <span>你的名字</span>
+                  <input type="text" name="partnerA" maxlength="12" placeholder="安">
+                </label>
+                <label class="field">
+                  <span>TA 的名字</span>
+                  <input type="text" name="partnerB" maxlength="12" placeholder="妤">
+                </label>
+                <label class="field">
+                  <span>首页小标题</span>
+                  <input type="text" name="heroEyebrow" maxlength="60" placeholder="OUR LITTLE UNIVERSE">
+                </label>
+                <label class="field">
+                  <span>页脚落款</span>
+                  <input type="text" name="footerNote" maxlength="120" placeholder="安妤鱼 · 只属于我们的秘密基地">
+                </label>
+              </div>
+              <label class="field">
+                <span>首页一句话</span>
+                <textarea name="heroSubtitle" rows="2" maxlength="120" placeholder="把每一个平凡的日子，都过成想你的样子。"></textarea>
+              </label>
+              <label class="field">
+                <span>关于我们 · 引言</span>
+                <textarea name="heroQuote" rows="2" maxlength="120" placeholder="愿我们在漫长的岁月里，永远是彼此最想回家的人。"></textarea>
+              </label>
+              <div class="form-actions">
+                <button class="admin-btn primary" id="settingsSave" type="submit">保存设置</button>
+              </div>
+            </form>
+          </div>
+
+          <div class="admin-card">
+            <div class="card-head">
+              <div>
+                <p class="card-kicker">PASSWORD</p>
+                <h3>修改后台密码</h3>
+                <p class="card-desc">修改后需要重新登录，请记好新密码。</p>
+              </div>
+            </div>
+            <form class="password-form" id="passwordForm">
+              <input type="text" name="username" autocomplete="username" value="anyu" hidden>
+              <div class="form-grid three">
+                <label class="field">
+                  <span>当前密码</span>
+                  <input type="password" id="currentPassword" autocomplete="current-password" required>
+                </label>
+                <label class="field">
+                  <span>新密码</span>
+                  <input type="password" id="newPassword" autocomplete="new-password" minlength="6" maxlength="64" required>
+                </label>
+                <label class="field">
+                  <span>再输一次新密码</span>
+                  <input type="password" id="confirmPassword" autocomplete="new-password" minlength="6" maxlength="64" required>
+                </label>
+              </div>
+              <div class="form-actions">
+                <button class="admin-btn secondary" id="passwordSave" type="submit">更新密码</button>
+              </div>
+            </form>
+          </div>
+        </section>
+
+        <!-- ======================= photos ======================= -->
+        <section class="admin-panel" data-panel="photos" hidden>
+          <div class="admin-card">
+            <div class="card-head">
+              <div>
+                <p class="card-kicker">HOMEPAGE PHOTOS</p>
+                <h3>上传新的照片</h3>
+                <p class="card-desc">首页轮播照片会出现在网站最上方；光影集是首页的照片墙。</p>
+              </div>
+            </div>
+            <form id="photoForm">
+              <div class="upload-row">
+                <label class="photo-drop" id="photoDrop">
+                  <input type="file" id="photoFile" accept="image/jpeg,image/png,image/webp,image/gif,image/avif" hidden>
+                  <span class="drop-icon">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 16V4M7 9l5-5 5 5M4 16v3h16v-3"/></svg>
+                  </span>
+                  <strong>点击或拖入一张照片</strong>
+                  <small>支持 JPG / PNG / WebP，单张不超过 150MB</small>
+                  <span class="drop-file" id="photoFileName">还没有选择照片</span>
+                </label>
+                <div class="upload-fields">
+                  <label class="field">
+                    <span>放到哪里</span>
+                    <select id="photoCategory">
+                      <option value="hero">首页轮播（网站最上方）</option>
+                      <option value="gallery">光影集（照片墙）</option>
+                    </select>
+                  </label>
+                  <label class="field">
+                    <span>照片说明（选填）</span>
+                    <input type="text" id="photoCaption" maxlength="80" placeholder="比如：2026 年夏天的海">
+                  </label>
+                  <button class="admin-btn primary" id="photoSubmit" type="submit">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 16V4M7 9l5-5 5 5M4 16v3h16v-3"/></svg>
+                    上传照片
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+
+          <div class="admin-card">
+            <div class="card-head">
+              <div>
+                <p class="card-kicker">HERO CAROUSEL</p>
+                <h3>首页轮播照 <span class="count-badge" id="heroPhotoCount">0</span></h3>
+                <p class="card-desc">可以上传多张，首页会自动轮播。没有上传时会显示默认风景插画。</p>
+              </div>
+            </div>
+            <div class="managed-photos" id="heroPhotoList"></div>
+          </div>
+
+          <div class="admin-card">
+            <div class="card-head">
+              <div>
+                <p class="card-kicker">PHOTO WALL</p>
+                <h3>光影集 <span class="count-badge" id="galleryPhotoCount">0</span></h3>
+                <p class="card-desc">生活记录里的照片也会自动出现在首页光影集中。</p>
+              </div>
+            </div>
+            <div class="managed-photos" id="galleryPhotoList"></div>
+          </div>
+        </section>
+
+        <!-- ======================= records ======================= -->
+        <section class="admin-panel" data-panel="records" hidden>
+          <div class="admin-card composer-card" id="composerCard">
+            <div class="card-head">
+              <div>
+                <p class="card-kicker">NEW MOMENT</p>
+                <h3 id="composerTitle">写一条生活记录</h3>
+                <p class="card-desc" id="composerHint">文字、照片、录音、视频，想把这一刻留成什么样都可以。</p>
+              </div>
+              <button class="text-btn" id="newRecordBtn" type="button">＋ 新建一条</button>
+            </div>
+            <form id="recordForm">
+              <input type="hidden" id="recordId" value="">
+              <input type="hidden" id="recordMood" value="">
+              <div class="form-grid two">
+                <label class="field">
+                  <span>这一天</span>
+                  <input type="date" id="recordDate" required>
+                </label>
+                <div class="field">
+                  <span>心情（选填）</span>
+                  <div class="mood-picker" id="moodPicker" role="group" aria-label="选择心情"></div>
+                </div>
+              </div>
+              <label class="field">
+                <span>标题（选填）</span>
+                <input type="text" id="recordTitle" maxlength="80" placeholder="给今天起一个小标题">
+              </label>
+              <label class="field">
+                <span>想说的话</span>
+                <textarea id="recordContent" rows="5" maxlength="8000" placeholder="今天发生了什么？有没有哪一刻想偷偷收藏起来……"></textarea>
+              </label>
+
+              <div class="attach-box">
+                <div class="attach-tools">
+                  <button class="tool-btn" type="button" id="pickMediaBtn">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v14H4z"/><path d="M4 16l5-5 4 4 2-2 5 5"/><circle cx="9" cy="9.5" r="1"/></svg>
+                    照片 / 视频
+                  </button>
+                  <button class="tool-btn" type="button" id="pickAudioBtn">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15V5M8 12v-2M16 14V8M4 13v-2M20 12v-2"/></svg>
+                    上传语音
+                  </button>
+                  <button class="tool-btn record-btn" type="button" id="audioRecordBtn">
+                    <span class="record-dot"></span>
+                    <span id="audioRecordLabel">直接录音</span>
+                  </button>
+                  <span class="attach-counter" id="attachCounter">0 / 12 个附件</span>
+                </div>
+                <input type="file" id="mediaInput" accept="image/jpeg,image/png,image/webp,image/gif,image/avif,video/mp4,video/webm,video/quicktime,video/x-m4v,audio/mpeg,audio/wav,audio/ogg,audio/webm,audio/mp4,audio/aac" multiple hidden>
+                <input type="file" id="audioInput" accept="audio/mpeg,audio/wav,audio/ogg,audio/webm,audio/mp4,audio/aac" multiple hidden>
+
+                <div class="recorder-strip" id="recorderStrip" hidden>
+                  <span class="recording-wave" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>
+                  <span id="audioRecordTime">00:00</span>
+                  <small>正在录音，再点一次结束</small>
+                </div>
+                <p class="attach-hint" id="audioHint">直接录音需要浏览器麦克风权限；手机上如果无法录音，也可以点「上传语音」。</p>
+                <div class="pending-files" id="pendingFiles"></div>
+                <div class="existing-media" id="existingMedia" hidden></div>
+              </div>
+
+              <div class="form-actions split">
+                <button class="admin-btn primary" id="recordSubmit" type="submit">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l4 4L19 6"/></svg>
+                  <span id="recordSubmitText">保存这一刻</span>
+                </button>
+                <button class="admin-btn ghost" id="recordCancel" type="button" hidden>取消编辑</button>
+              </div>
+            </form>
+          </div>
+
+          <div class="admin-card">
+            <div class="card-head">
+              <div>
+                <p class="card-kicker">ALL MOMENTS</p>
+                <h3>全部记录 <span class="count-badge" id="recordCount">0</span></h3>
+              </div>
+            </div>
+            <div class="record-list" id="recordList"></div>
+          </div>
+        </section>
+
+        <!-- ======================= moods ======================= -->
+        <section class="admin-panel" data-panel="moods" hidden>
+          <div class="mood-admin-grid">
+            <div class="admin-card">
+              <div class="card-head">
+                <div>
+                  <p class="card-kicker">DAILY MOOD</p>
+                  <h3>今天的心情</h3>
+                  <p class="card-desc">同一天记录多次时，会更新为最后一次的心情。</p>
+                </div>
+              </div>
+              <form id="moodForm">
+                <label class="field">
+                  <span>日期</span>
+                  <input type="date" id="moodDate" required>
+                </label>
+                <div class="field">
+                  <span>选择一种心情</span>
+                  <div class="mood-picker large" id="moodChoices" role="group" aria-label="选择心情"></div>
+                </div>
+                <label class="field">
+                  <span>想说的话（选填）</span>
+                  <textarea id="moodNote" rows="4" maxlength="240" placeholder="今天的情绪，想被怎么记住？"></textarea>
+                </label>
+                <div class="form-actions">
+                  <button class="admin-btn primary" id="moodSubmit" type="submit">保存心情</button>
+                </div>
+              </form>
+            </div>
+            <div class="admin-card">
+              <div class="card-head">
+                <div>
+                  <p class="card-kicker">MOOD HISTORY</p>
+                  <h3>心情记录 <span class="count-badge" id="moodCount">0</span></h3>
+                </div>
+              </div>
+              <div class="mood-history" id="moodList"></div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <nav class="admin-mobile-nav" aria-label="手机后台导航">
+      <button type="button" data-section="overview" class="active">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h6v6H4zM14 4h6v6h-6zM4 14h6v6H4zM14 14h6v6h-6z"/></svg>
+        <span>概览</span>
+      </button>
+      <button type="button" data-section="settings">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .34 1.88l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.7 1.7 0 0 0-1.88-.34 1.7 1.7 0 0 0-1 1.56V21a2 2 0 1 1-4 0v-.09A1.7 1.7 0 0 0 9 19.35a1.7 1.7 0 0 0-1.88.34l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.7 1.7 0 0 0 4.63 15a1.7 1.7 0 0 0-1.56-1H3a2 2 0 1 1 0-4h.09A1.7 1.7 0 0 0 4.65 9a1.7 1.7 0 0 0-.34-1.88l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.7 1.7 0 0 0 9 4.63a1.7 1.7 0 0 0 1-1.56V3a2 2 0 1 1 4 0v.09A1.7 1.7 0 0 0 15 4.65a1.7 1.7 0 0 0 1.88-.34l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.7 1.7 0 0 0 19.37 9c.14.38.4.7.74.92.3.2.65.3 1 .3H21a2 2 0 1 1 0 4h-.09a1.7 1.7 0 0 0-1.51.78Z"/></svg>
+        <span>设置</span>
+      </button>
+      <button type="button" data-section="photos">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v14H4z"/><path d="M4 16l5-5 4 4 2-2 5 5"/><circle cx="9" cy="9.5" r="1"/></svg>
+        <span>照片</span>
+      </button>
+      <button type="button" data-section="records">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h14v16H5z"/><path d="M8 8h8M8 12h8M8 16h5"/></svg>
+        <span>记录</span>
+      </button>
+      <button type="button" data-section="moods">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8.5 14.5c1 1.3 2.2 2 3.5 2s2.5-.7 3.5-2M9 9.5h.01M15 9.5h.01"/></svg>
+        <span>心情</span>
+      </button>
+    </nav>
+  </div>
+
+  <div class="confirm-modal" id="confirmModal" role="dialog" aria-modal="true" aria-labelledby="confirmTitle" hidden>
+    <div class="confirm-box">
+      <span class="confirm-icon">♡</span>
+      <h3 id="confirmTitle">确认删除吗？</h3>
+      <p id="confirmText">删除后就找不回来了。</p>
+      <div class="confirm-actions">
+        <button class="admin-btn ghost" id="confirmCancel" type="button">先留着</button>
+        <button class="admin-btn danger" id="confirmOk" type="button">确认删除</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="admin-toast" id="adminToast" role="status" aria-live="polite"></div>
+
+  <script src="/js/admin.js" defer></script>
+</body>
+</html>

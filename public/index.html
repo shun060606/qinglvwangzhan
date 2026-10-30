@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#fbf5ec">
+  <meta name="description" content="安妤鱼 · 记录心情、日常与相爱的每一天。">
+  <title>安妤鱼 · 我们的恋爱小屋</title>
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/css/style.css">
+  <noscript><style>.page-loader{display:none!important}.reveal{opacity:1!important;transform:none!important}</style></noscript>
+</head>
+<body>
+  <div class="page-loader" id="pageLoader" aria-hidden="true">
+    <div class="loader-mark">
+      <svg viewBox="0 0 64 64" aria-hidden="true"><path d="M32 50c-3.8-3.4-15.5-11.8-18.7-19.5-3.2-7.7 2.4-15.8 10.3-15.1 3.8.3 6.8 2.7 8.4 5.4 1.6-2.7 4.6-5.1 8.4-5.4 7.9-.7 13.5 7.4 10.3 15.1C47.5 38.2 35.8 46.6 32 50z"/></svg>
+      <span>安妤鱼</span>
+    </div>
+    <div class="loader-line"><i></i></div>
+  </div>
+
+  <header class="site-header" id="siteHeader">
+    <div class="header-inner">
+      <a class="brand" href="#home" aria-label="安妤鱼首页">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 40 40"><path d="M20 33c-2.7-2.4-11-8.4-13.3-13.8C4.4 13.7 8.4 8 13.9 8.5c2.7.2 4.8 1.9 6.1 3.8 1.2-1.9 3.3-3.6 6-3.8 5.5-.5 9.5 5.2 7.3 10.7C31 24.6 22.7 30.6 20 33z"/></svg>
+        </span>
+        <span class="brand-text">
+          <span class="brand-name" id="brandName">安妤鱼</span>
+          <span class="brand-sub">OUR LITTLE UNIVERSE</span>
+        </span>
+      </a>
+      <nav class="desktop-nav" aria-label="主导航">
+        <a href="#home" class="active">首页</a>
+        <a href="#story">关于我们</a>
+        <a href="#moods">心情</a>
+        <a href="#moments">日常</a>
+        <a href="#gallery">光影集</a>
+      </nav>
+      <div class="header-actions">
+        <a class="header-admin" href="/admin">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15.2a3.2 3.2 0 1 0 0-6.4 3.2 3.2 0 0 0 0 6.4Z"/><path d="M19.4 15a1.7 1.7 0 0 0 .34 1.88l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.7 1.7 0 0 0-1.88-.34 1.7 1.7 0 0 0-1 1.56V21a2 2 0 1 1-4 0v-.09A1.7 1.7 0 0 0 9 19.35a1.7 1.7 0 0 0-1.88.34l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.7 1.7 0 0 0 4.63 15a1.7 1.7 0 0 0-1.56-1H3a2 2 0 1 1 0-4h.09A1.7 1.7 0 0 0 4.65 9a1.7 1.7 0 0 0-.34-1.88l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.7 1.7 0 0 0 9 4.63a1.7 1.7 0 0 0 1-1.56V3a2 2 0 1 1 4 0v.09A1.7 1.7 0 0 0 15 4.65a1.7 1.7 0 0 0 1.88-.34l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.7 1.7 0 0 0 19.37 9c.14.38.4.7.74.92.3.2.65.3 1 .3H21a2 2 0 1 1 0 4h-.09a1.7 1.7 0 0 0-1.51.78Z"/></svg>
+          <span>后台</span>
+        </a>
+        <button class="menu-toggle" id="menuToggle" type="button" aria-label="打开菜单" aria-expanded="false" aria-controls="mobileMenu">
+          <span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+    <div class="mobile-menu-inner">
+      <p class="mobile-menu-eyebrow">OUR LITTLE UNIVERSE</p>
+      <nav aria-label="手机导航">
+        <a href="#home"><span>01</span>首页</a>
+        <a href="#story"><span>02</span>关于我们</a>
+        <a href="#moods"><span>03</span>心情气象</a>
+        <a href="#moments"><span>04</span>我们的日常</a>
+        <a href="#gallery"><span>05</span>光影集</a>
+        <a href="/admin"><span>06</span>进入后台</a>
+      </nav>
+      <div class="mobile-menu-footer">
+        <p>把日子过成诗，把爱写进时间里。</p>
+        <span id="menuDate"></span>
+      </div>
+    </div>
+  </div>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="hero-slides" id="heroSlides" aria-hidden="true"></div>
+      <div class="hero-veil"></div>
+      <div class="hero-grain"></div>
+
+      <div class="hero-content">
+        <div class="hero-left">
+          <p class="hero-eyebrow reveal" id="heroEyebrow">OUR LITTLE UNIVERSE</p>
+          <h1 class="hero-title reveal">
+            <span id="heroTitle">安妤鱼</span>
+            <span class="title-underline" aria-hidden="true"></span>
+          </h1>
+          <p class="hero-names reveal">
+            <span id="partnerA">安</span>
+            <span class="names-amp">&amp;</span>
+            <span id="partnerB">妤</span>
+          </p>
+          <p class="hero-subtitle reveal" id="heroSubtitle">把每一个平凡的日子，都过成想你的样子。</p>
+
+          <div class="hero-cta reveal">
+            <a class="btn btn-light" href="/admin#new-record">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+              记录今天
+            </a>
+            <a class="btn btn-ghost" href="#moments">
+              翻阅我们的故事
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="love-clock reveal" aria-label="恋爱时长">
+          <div class="clock-orbit" aria-hidden="true"></div>
+          <div class="clock-top">
+            <span class="clock-dot"></span>
+            <span>我们已经相爱</span>
+          </div>
+          <div class="clock-days">
+            <span id="loveDays">0</span>
+            <em>天</em>
+          </div>
+          <div class="clock-time">
+            <span id="clockHours">00</span><i>:</i><span id="clockMinutes">00</span><i>:</i><span id="clockSeconds">00</span>
+          </div>
+          <div class="clock-since">从 <span id="startDateText">2024.05.20</span> 开始，每分每秒都算数</div>
+        </div>
+      </div>
+
+      <div class="hero-bottom">
+        <a class="scroll-cue" href="#story" aria-label="向下滚动">
+          <span>SCROLL TO LOVE</span>
+          <i></i>
+        </a>
+        <div class="hero-dots" id="heroDots" aria-label="首页照片切换"></div>
+        <p class="hero-side-note">SINCE <span id="heroSince">2024</span></p>
+      </div>
+      <div class="hero-photo-credit" id="heroCredit"></div>
+    </section>
+
+    <section class="section story-section" id="story">
+      <div class="section-shell">
+        <div class="story-grid">
+          <div class="story-heading">
+            <p class="section-kicker reveal"><span>01</span> ABOUT US</p>
+            <h2 class="section-title reveal">关于我们<br><em>和那些被珍藏的日子</em></h2>
+            <div class="story-seal reveal" aria-hidden="true">
+              <svg viewBox="0 0 120 120">
+                <defs><path id="sealPath" d="M60,60 m-42,0 a42,42 0 1,1 84,0 a42,42 0 1,1 -84,0"/></defs>
+                <text><textPath href="#sealPath">ANYU FISH · OUR STORY · 安妤鱼 · </textPath></text>
+                <path class="seal-heart" d="M60 74c-3-2.8-12.4-9.5-15-15.6-2.5-6.2 2-12.6 8.3-12.1 2.2.2 3.9 1.5 5 3.1 1.1-1.6 2.8-2.9 5-3.1 6.3-.5 10.8 5.9 8.3 12.1C72.4 64.5 63 71.2 60 74z"/>
+              </svg>
+            </div>
+          </div>
+
+          <div class="story-content">
+            <p class="story-lead reveal" id="heroQuote">愿我们在漫长的岁月里，永远是彼此最想回家的人。</p>
+            <p class="story-text reveal">这里收藏着我们琐碎又闪亮的日常：一句没头没尾的话、一顿一起做的晚饭、一段凌晨的语音，还有那些不必说出口也懂的瞬间。</p>
+            <p class="story-text reveal">时间一直往前走，而我们把爱留在这里。</p>
+
+            <div class="story-stats">
+              <div class="stat-card reveal">
+                <span class="stat-number" data-count id="statDays">0</span>
+                <span class="stat-label">相爱的日子</span>
+                <small>DAYS TOGETHER</small>
+              </div>
+              <div class="stat-card reveal">
+                <span class="stat-number" data-count id="statRecords">0</span>
+                <span class="stat-label">生活记录</span>
+                <small>MOMENTS SAVED</small>
+              </div>
+              <div class="stat-card reveal">
+                <span class="stat-number" data-count id="statPhotos">0</span>
+                <span class="stat-label">照片收藏</span>
+                <small>PHOTOS KEPT</small>
+              </div>
+            </div>
+
+            <div class="story-signature reveal">
+              <span id="signatureA">安</span><i>&amp;</i><span id="signatureB">妤</span>
+              <small>写于每一个有你的日子</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section mood-section" id="moods">
+      <div class="section-shell">
+        <div class="section-head">
+          <div>
+            <p class="section-kicker reveal"><span>02</span> MOOD WEATHER</p>
+            <h2 class="section-title reveal">心情气象站<br><em>今天，你的心里是什么天气？</em></h2>
+          </div>
+          <a class="text-link reveal" href="/admin#mood">记录今日心情 <span>↗</span></a>
+        </div>
+
+        <div class="mood-layout">
+          <div class="mood-panel reveal">
+            <div class="mood-today">
+              <div>
+                <p class="mood-label">TODAY'S MOOD</p>
+                <h3 id="todayMoodTitle">今天还没有记录</h3>
+                <p id="todayMoodNote">去写下今天的心情吧，晴天或雨天都值得被记住。</p>
+              </div>
+              <div class="mood-emoji-big" id="todayMoodEmoji" aria-hidden="true">☁️</div>
+            </div>
+
+            <div class="mood-bars-head">
+              <span>最近的心情颜色</span>
+              <span id="moodCountLabel">共 0 天</span>
+            </div>
+            <div class="mood-bars" id="moodBars"></div>
+
+            <div class="mood-quote">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h4v4H9c0 2 1 3 3 4v2c-4 0-6-2-6-6V7h1Zm10 0h4v4h-2c0 2 1 3 3 4v2c-4 0-6-2-6-6V7h1Z"/></svg>
+              <p>情绪没有好坏，你的每一种心情，我都想接住。</p>
+            </div>
+          </div>
+
+          <div class="calendar-card reveal">
+            <div class="calendar-head">
+              <button type="button" id="calendarPrev" aria-label="上个月">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
+              </button>
+              <div>
+                <h3 id="calendarTitle">2024 年 5 月</h3>
+                <p>每一天，都算数</p>
+              </div>
+              <button type="button" id="calendarNext" aria-label="下个月">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
+              </button>
+            </div>
+            <div class="calendar-weekdays" aria-hidden="true">
+              <span>一</span><span>二</span><span>三</span><span>四</span><span>五</span><span>六</span><span>日</span>
+            </div>
+            <div class="calendar-grid" id="calendarGrid"></div>
+            <div class="calendar-detail" id="calendarDetail">
+              <span class="detail-emoji" id="calendarDetailEmoji">♡</span>
+              <div>
+                <strong id="calendarDetailTitle">点一点有颜色的日子</strong>
+                <p id="calendarDetailText">看看那天的心情和悄悄话。</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section moments-section" id="moments">
+      <div class="section-shell">
+        <div class="section-head">
+          <div>
+            <p class="section-kicker reveal"><span>03</span> OUR DAILY MOMENTS</p>
+            <h2 class="section-title reveal">我们的日常<br><em>文字、照片、声音与画面</em></h2>
+          </div>
+          <a class="text-link reveal" href="/admin#new-record">写下这一刻 <span>↗</span></a>
+        </div>
+
+        <div class="filters reveal" id="recordFilters" role="group" aria-label="筛选记录">
+          <button class="active" data-filter="all" type="button">全部</button>
+          <button data-filter="text" type="button">文字</button>
+          <button data-filter="image" type="button">照片</button>
+          <button data-filter="audio" type="button">语音</button>
+          <button data-filter="video" type="button">视频</button>
+        </div>
+
+        <div class="timeline" id="timeline" aria-live="polite"></div>
+        <div class="load-more-wrap">
+          <button class="btn btn-outline" id="loadMore" type="button" hidden>再看一些日子</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="section gallery-section" id="gallery">
+      <div class="section-shell">
+        <div class="section-head">
+          <div>
+            <p class="section-kicker reveal"><span>04</span> LIGHT &amp; MEMORY</p>
+            <h2 class="section-title reveal">光影集<br><em>把喜欢的瞬间，洗成不会褪色的照片</em></h2>
+          </div>
+          <a class="text-link reveal" href="/admin#photos">添加照片 <span>↗</span></a>
+        </div>
+        <div class="gallery-wall" id="galleryWall"></div>
+      </div>
+    </section>
+
+    <section class="closing-section">
+      <div class="closing-bg" aria-hidden="true"></div>
+      <div class="closing-inner">
+        <span class="closing-heart" aria-hidden="true">♡</span>
+        <p class="closing-eyebrow reveal">TO BE CONTINUED</p>
+        <h2 class="closing-quote reveal">“ 日子很长，<br>但和你在一起，永远嫌短。”</h2>
+        <div class="closing-sign reveal">
+          <span id="closingNames">安 &amp; 妤</span>
+          <i></i>
+          <span id="closingDate">2024 — FOREVER</span>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <a class="footer-brand" href="#home">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 40 40"><path d="M20 33c-2.7-2.4-11-8.4-13.3-13.8C4.4 13.7 8.4 8 13.9 8.5c2.7.2 4.8 1.9 6.1 3.8 1.2-1.9 3.3-3.6 6-3.8 5.5-.5 9.5 5.2 7.3 10.7C31 24.6 22.7 30.6 20 33z"/></svg>
+        </span>
+        <span>
+          <strong id="footerTitle">安妤鱼</strong>
+          <small id="footerNote">安妤鱼 · 只属于我们的秘密基地</small>
+        </span>
+      </a>
+      <p class="footer-copy">© <span id="footerYear">2026</span> <span id="footerNames">安 &amp; 妤</span> · Made with love</p>
+      <a class="footer-admin" href="/admin">管理我们的小屋 <span>↗</span></a>
+    </div>
+  </footer>
+
+  <button class="back-top" id="backTop" type="button" aria-label="回到顶部">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M6 11l6-6 6 6"/></svg>
+  </button>
+
+  <a class="mobile-quick" href="/admin#new-record" aria-label="记录今天">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+    <span>记录</span>
+  </a>
+
+  <div class="lightbox" id="lightbox" aria-hidden="true" role="dialog" aria-modal="true" aria-label="查看照片">
+    <button class="lightbox-close" id="lightboxClose" type="button" aria-label="关闭">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+    <button class="lightbox-nav prev" id="lightboxPrev" type="button" aria-label="上一张">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
+    </button>
+    <figure>
+      <img id="lightboxImage" src="" alt="">
+      <figcaption id="lightboxCaption"></figcaption>
+    </figure>
+    <button class="lightbox-nav next" id="lightboxNext" type="button" aria-label="下一张">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
+    </button>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="/js/app.js" defer></script>
+</body>
+</html>
